@@ -54,7 +54,7 @@ fun getTextTitle (title : String){
     Text(
         text = title,
         fontSize = 20.sp,
-        color = Color.Red,
+        color = Color.White,
         fontWeight = FontWeight.Bold
         )
 

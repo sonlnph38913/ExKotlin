@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.slide3_jc"
+    namespace = "com.example.lab3_ph38913"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.slide3_jc"
+        applicationId = "com.example.lab3_ph38913"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation(libs.compose.preview.renderer)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -71,5 +70,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.navigation:navigation-compose:2.7.6")
-
 }
