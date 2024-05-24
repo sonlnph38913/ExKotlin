@@ -315,7 +315,7 @@ fun GetLoginButton(onClick: () -> Unit) {
     }
 }
 
-private fun navigateToHomeScreen(context: Context) {
+ fun navigateToHomeScreen(context: Context) {
     val intent = Intent(context, HomeActivity::class.java)
     context.startActivity(intent)
 }

@@ -47,7 +47,10 @@ val customFontFamily = FontFamily(
     Font(R.font.gelasio, FontWeight.Normal)
 )
 val customFontFamily2 = FontFamily(
-    Font(R.font.nunotosan1, FontWeight.Normal)
+    Font(R.font.nuno2, FontWeight.Normal)
+)
+val customFontFamily3 = FontFamily(
+    Font(R.font.nuno2, FontWeight.Bold)
 )
 
 @Composable
