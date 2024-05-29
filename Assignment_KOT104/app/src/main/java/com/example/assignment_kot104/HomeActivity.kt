@@ -143,25 +143,23 @@ fun getHeaderHome() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductListScreen() {
-    val products = getProducts() // Hàm lấy danh sách sản phẩm
+    val products = getProducts()
 
-    Scaffold(
-        modifier = Modifier.height(620.dp)
-
-    ) { innerPadding ->
+    Scaffold { innerPadding ->
         LazyVerticalGrid(
             columns = GridCells.Fixed(2), // Two columns
             contentPadding = innerPadding,
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
-                .height(650.dp)
+
                 .padding(16.dp)
         ) {
             items(products) { product ->
                 ProductItem(product = product)
             }
         }
+//        AssignmentApp()
     }
 }
 
@@ -171,15 +169,13 @@ fun ProductItem(product: Product) {
     Card(
         modifier = Modifier
             .width(300.dp)
-//            .padding(horizontal = 16.dp, vertical = 8.dp)
             ,
-        elevation = CardDefaults.cardElevation(0.dp), // Set elevation
+        elevation = CardDefaults.cardElevation(0.dp),
         colors = CardDefaults.cardColors(containerColor = Color("#fffbfe".toColorInt()))
     ) {
         Column(
             modifier = Modifier
                 .clickable { navigateToProScreen(context) }
-//                .padding(16.dp),
 
         ) {
             Image(
@@ -188,9 +184,6 @@ fun ProductItem(product: Product) {
                 modifier = Modifier
                     .size(300.dp)
             )
-
-
-
             Column {
                 Text(text = product.name,
                     style = TextStyle(
@@ -215,8 +208,6 @@ fun ProductItem(product: Product) {
 data class Product(val id: Int, val name: String, val price: String, val image: Int)
 
 fun getProducts(): List<Product> {
-    // Lấy danh sách sản phẩm từ cơ sở dữ liệu hoặc API
-    // Thay thế bằng logic lấy dữ liệu thực tế của bạn
     return listOf(
         Product(1, "Black Simple Lamp", "$12.00", R.drawable.img1),
         Product(2, "Minimal Stand", "$25.00", R.drawable.img2),
@@ -279,10 +270,10 @@ fun BottomNavigationBar(navController: NavHostController) {
 @Composable
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
-        composable(NavigationItem.Home.route) { HomeActivity() }
-        composable(NavigationItem.Cart.route) { CardActivity() }
+        composable(NavigationItem.Home.route) { getLayoutHome() }
+        composable(NavigationItem.Cart.route) { GetLayoutCard() }
         composable(NavigationItem.Profile.route) { ProfileScreen() }
-        composable(NavigationItem.Tb.route){ThongBaoActivity()}
+        composable(NavigationItem.Tb.route){ getLayoutTB()}
     }
 }
 
@@ -293,27 +284,7 @@ sealed class NavigationItem(var route: String, var icon: ImageVector, var title:
     object Profile : NavigationItem("tb", Icons.Default.Person, "")
 
 }
-@Composable
-fun HomeScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Home Screen", fontSize = 20.sp)
-    }
-}
 
-@Composable
-fun CartScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Cart Screen", fontSize = 20.sp)
-    }
-}
 
 @Composable
 fun ProfileScreen() {
