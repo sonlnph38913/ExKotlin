@@ -50,12 +50,22 @@ class MainActivity : ComponentActivity() {
     }
 
 }
+@Preview
 @Composable
 fun LoginScreen() {
     val context = LocalContext.current
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var showDialog by remember { mutableStateOf(false) }
+    var dialogMessage by remember { mutableStateOf("") }
 
+    if (showDialog) {
+        DialogComponent(
+            onConfirmation = { showDialog = false },
+            dialogTitle = "Notification",
+            dialogMessage = dialogMessage
+        )
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -88,19 +98,16 @@ fun LoginScreen() {
         Spacer(modifier = Modifier.height(10.dp))
         RememberMeSwitch()
         Spacer(modifier = Modifier.height(12.dp))
+
         // Login Button
         Button(
             onClick = {
                 if (username.isNotBlank() && password.isNotBlank()) {
-                    Toast.makeText(context, "Login successful",
-                        Toast.LENGTH_LONG).show()
+                    dialogMessage="Login successful"
                 } else {
-                    Toast.makeText(
-                        context,
-                        "Please enter username and password",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    dialogMessage = "Please enter username and password"
                 }
+                showDialog = true
             },
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.DarkGray,
