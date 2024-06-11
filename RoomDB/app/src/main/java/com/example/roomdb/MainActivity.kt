@@ -187,7 +187,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             }
         }
     }
-
+//show dialog edit ????
     if (editStudent != null) {
         ShowEditStudentDialog(
             student = editStudent!!,
@@ -202,7 +202,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         )
     }
 }
-
+//dialog chi tiết
 @Composable
 fun ShowDialogStudentInfor(
     onConfirmation: () -> Unit,
@@ -225,11 +225,15 @@ fun ShowDialogStudentInfor(
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.Start,
             ) {
-                Text(dialogTitle, style =
-                MaterialTheme.typography.titleLarge)
+                Text(
+                    dialogTitle, style =
+                    MaterialTheme.typography.titleLarge
+                )
                 Spacer(modifier = Modifier.height(20.dp))
-                Text(dialogMessage, style =
-                MaterialTheme.typography.bodyMedium)
+                Text(
+                    dialogMessage, style =
+                    MaterialTheme.typography.bodyMedium
+                )
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
                     onClick = onConfirmation,
@@ -246,7 +250,7 @@ fun ShowDialogStudentInfor(
         }
     }
 }
-
+//dialog update
 @Composable
 fun ShowEditStudentDialog(
     student: StudentModel,
